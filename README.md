@@ -11,6 +11,7 @@ src/
   |- sample_data.csv
 requirements.txt
 risk_stratification_xgb.ipynb
+sample_survival_curve_output.png
 ```
 `src/baseline_cumulative_hazard_{suffix}.csv`
 * These CSV files contain baseline cumulative hazard ($CH_{0}(t)$) for compact and complex models.
