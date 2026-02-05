@@ -88,7 +88,6 @@ Initial Treatment Response
 * Input features are defined as follows:
   * _Compact Model_: Demographics + Classical & Molecular Features
   * _Complex Model_: Demographis + Classical & Molecular Features + Initial Treatment & Response
-
 * Each model file is a Python `dict` object of five distinct XGBoost regressors trained off each cross-validation fold.
 * They predict the natural log of relative hazard, and as a result, the cumulative hazard and survival curve.
 
@@ -100,3 +99,7 @@ Initial Treatment Response
 $$CH(t|x) = CH_{0}(t) \cdot \exp\left(\frac{1}{K}\sum_{i=1}^{K} \hat{f}_{i}(x)\right)$$
 
 $$S(t|x) = \exp(-CH(t|x))$$
+
+## Sample Survival Curves
+* Survival curves for the sample cases are shown below:
+[](survival_curve_results.png)
