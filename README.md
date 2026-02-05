@@ -13,7 +13,7 @@ requirements.txt
 risk_stratification_xgb.ipynb
 ```
 `src/baseline_cumulative_hazard_{suffix}.csv`
-* These CSV files contain baseline cumulative hazard ($H_{0}(t)$) for compact and complex models.
+* These CSV files contain baseline cumulative hazard ($CH_{0}(t)$) for compact and complex models.
 * 95% Confidence intervals were generated using bootstrap resampling (n=2000)
 
 `src/model_{suffix}.pth`
@@ -83,7 +83,12 @@ Initial Treatment Response
 | #5 | 64/M | Stage IVB Adenoca. | EGFR L861Q(+) / ALK(-) / PD-L1 not available | EGFR TKI (1st gen.) | PD |
 | #6 | 59/M | Stage IVB Adenoca. | EGFR(-) / ALK(-) / PD-L1 expr. 0% | Cytotoxic chemotherapy | PD |
 
-
+# Risk Stratification
+## Model Description
+* Each model file is a Python `dict` object of five distinct XGBoost regressors trained off each cross-validation fold.
+* They predict the natural log of relative hazard, and as a result, the cumulative hazard and survival curve can be estimated as follows, denoting the regressor of fold $i$ as $\hat{f}_{i}(\vec{x})$
+$$CH(t|\vec{x}) = CH_{0}(t) * \exp({{1}\over{K}}\Sum_{i=1}^{K} \hat{f}_{i}(\vec{x})$$
+$$S(t|\vec{x}) = \exp{-CH(t|\vec(x)}$$
 
 
 
