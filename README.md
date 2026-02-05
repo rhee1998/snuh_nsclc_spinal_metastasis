@@ -102,5 +102,5 @@ $$CH(t|x) = CH_{0}(t) \cdot \exp\left(\frac{1}{K}\sum_{i=1}^{K} \hat{f}_{i}(x)\r
 $$S(t|x) = \exp(-CH(t|x))$$
 
 ## Sample Survival Curves
-* Survival curves for the sample cases are shown below:
+* Survival curves of the sample cases are shown below:
 ![Survival Curves](sample_survival_curve_output.png)
