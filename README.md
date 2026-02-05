@@ -12,7 +12,6 @@ src/
 requirements.txt
 risk_stratification_xgb.ipynb
 ```
-
 `src/baseline_cumulative_hazard_{suffix}.csv`
 * These CSV files contain baseline cumulative hazard ($H_{0}(t)$) for compact and complex models.
 * 95% Confidence intervals were generated using bootstrap resampling (n=2000)
@@ -29,3 +28,41 @@ risk_stratification_xgb.ipynb
 
 `risk_stratification_xgb.ipynb`
 * This Jupyter Notebook file contains script for predicting survival curves for each sample patient.
+
+# Sample Data Description
+
+## Column Names
+Demographic Features
+* `AGE`: age in years
+* `SEX`: male(`M`) or female(`F`)
+* `BMI`: body mass index in $kg/m^2$
+* `CHARLSON`: Charlson comorbidity index
+
+Classical Tumor Features
+* `CANCER_TYPE`: histological subtype categorized into adenocarcinoma (`ADC`), squamous cell carcinoma (`SQCC`), and other (`OTHER`)
+* `CANCER_STAGE`: clinical stage of NSCLC at the time of initial diagnosis
+* `SUV_MAX`: maximum standardized uptake value at initial PET/CT if available
+
+Molecular Tumor Features
+* `EGFR_ANY`: presence of any EGFR mutation (0-not present/1-present)
+* `EGFR_{mutation_type}`: presence of specific `mutation_type` of the EGFR gene (0/1)
+* `ALK`: presence of any ALK mutation (0/1)
+* `PD_L1`: expression levels of PD-L1 gene normalized to range $[0, 1]$.
+
+Initial Treatment Features - Surgical
+* `OP_RESECTION`: whether the patient has undergone surgical resection of primary tumor (0/1)
+* `OP_NEOADJ`: whether the patient has undergone neoadjuvant therapy prior to surgery (0/1)
+
+Initial Treatment Features - Pharmacological Therapy
+* `CYTO_PLAT`: platinum agent administration (0/1)
+* `CYTO_ALKYL`: alkylating agent administration (0/1)
+* `CYTO_TOPO`: topoisomerate inhibitor administration (0/1)
+* `CYTO_METABOL`: antimetabolite administration (0/1)
+* `CYTO_MITO`: anti-mitotic agent administration (0/1)
+* `EGFR_TKI`: 0-not administered / 1-1st generation / 2-2nd generation / 3-3rd generation
+* `ALK_TKI`: 0-not administered / 1-administered
+* `OTHER_TARGET`: administration of other targeting agents (0/1)
+* `IMMUNE`: administration of monoclonal antibodies (mAb)
+
+
+
