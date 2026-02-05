@@ -102,4 +102,4 @@ $$S(t|x) = \exp(-CH(t|x))$$
 
 ## Sample Survival Curves
 * Survival curves for the sample cases are shown below:
-[](survival_curve_results.png)
+![Survival Curves](sample_survival_curve_output.png)
