@@ -64,5 +64,26 @@ Initial Treatment Features - Pharmacological Therapy
 * `OTHER_TARGET`: administration of other targeting agents (0/1)
 * `IMMUNE`: administration of monoclonal antibodies (mAb)
 
+Initial Treatment Features - Radiotherapy
+* `RT`: whether radiotherapy to the primary tumor was applied (0/1)
+* `RT_GY`: total radiation dose in Gy
+* `RT_FX`: number of fractionation
+
+Initial Treatment Response
+* `RECIST`: combination of RECIST(`CR`, `PR`, `SD`, `PD`) and `NED` (for patients who underwent complete surgical resection of the primary tumor)
+* `SUV_MAX_POST`: maximum standardized uptake value after initial treatment, if PET/CT was conducted.
+
+## Sample Case Description
+| **Case** | **Age/Sex** | **Clinical Staging** | **Molecular Features** | **Initial Treatment** | **Response** |
+| :---: | :---: | :---: | :--- | :--- | :--- |
+| #1 | 74/M | Stage IB Adenoca. | EGFR e19del(+) / ALK(-) / PD-L1 not available | Surgical resection without adjuvant treatment | NED |
+| #2 | 61/F | Stage IIA Adenoca. | EGFR(-) / ALK(+) / PD-L1 expr. 0% | Surgical resection with adjuvant chemotherapy | PR |
+| #3 | 55/F | Stage IIIA Adenoca. | EGFR(-) / ALK(-) / PD-L1 expr. 0% | Concurrent chemoradiotherapy (cytotoxic agent) | SD |
+| #4 | 60/F | Stage IVB Adenoca. | EGFR e19del(+) / ALK(-) / PD-L1 not available | EGFR TKI (1st gen.) | PR |
+| #5 | 64/M | Stage IVB Adenoca. | EGFR L861Q(+) / ALK(-) / PD-L1 not available | EGFR TKI (1st gen.) | PD |
+| #6 | 59/M | Stage IVB Adenoca. | EGFR(-) / ALK(-) / PD-L1 expr. 0% | Cytotoxic chemotherapy | PD |
+
+
+
 
 
