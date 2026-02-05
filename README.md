@@ -85,12 +85,18 @@ Initial Treatment Response
 
 # Risk Stratification
 ## Model Description
+* Input features are defined as follows:
+  * _Compact Model_: Demographics + Classical & Molecular Features
+  * _Complex Model_: Demographis + Classical & Molecular Features + Initial Treatment & Response
+
 * Each model file is a Python `dict` object of five distinct XGBoost regressors trained off each cross-validation fold.
-* They predict the natural log of relative hazard, and as a result, the cumulative hazard and survival curve can be estimated as follows, denoting the regressor of fold $i$ as $\hat{f}_{i}(\vec{x})$
+* They predict the natural log of relative hazard, and as a result, the cumulative hazard and survival curve.
 
-$$CH(t|\vec{x}) = CH_{0}(t) \cdot \exp\left(\frac{1}{K}\sum_{i=1}^{K} \hat{f}_{i}(\vec{x})\right)$$
+## Survival Curve Estimation
+* Baseline cumulative hazard function was estimated using Breslow's method.
+* Confidence intervals were obtained using bootstrap resampling (n=2000)
+* Procedures to obtaining the survival curve are as follows, where $K$ is the number of operations and $f(x)$ denotes XGBoost regressor trained from each fold.
 
-$$S(t|\vec{x}) = \exp(-CH(t|\vec{x}))$$
+$$CH(t|x) = CH_{0}(t) \cdot \exp\left(\frac{1}{K}\sum_{i=1}^{K} \hat{f}_{i}(x)\right)$$
 
-
-
+$$S(t|x) = \exp(-CH(t|x))$$
