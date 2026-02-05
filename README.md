@@ -86,9 +86,11 @@ Initial Treatment Response
 # Risk Stratification
 ## Model Description
 * Each model file is a Python `dict` object of five distinct XGBoost regressors trained off each cross-validation fold.
-* They predict the natural log of relative hazard, and as a result, the cumulative hazard and survival curve can be estimated as follows, denoting the regressor of fold $i$ as $\hat{f}_{i}(\vec{x})$<br>
-$$CH(t|\vec{x}) = CH_{0}(t) * \exp({{1}\over{K}}\Sum_{i=1}^{K} \hat{f}_{i}(\vec{x})$$<br>
-$$S(t|\vec{x}) = \exp{-CH(t|\vec(x)}$$<br>
+* They predict the natural log of relative hazard, and as a result, the cumulative hazard and survival curve can be estimated as follows, denoting the regressor of fold $i$ as $\hat{f}_{i}(\vec{x})$
+
+$$CH(t|\vec{x}) = CH_{0}(t) \cdot \exp\left(\frac{1}{K}\sum_{i=1}^{K} \hat{f}_{i}(\vec{x})\right)$$
+
+$$S(t|\vec{x}) = \exp(-CH(t|\vec{x}))$$
 
 
 
