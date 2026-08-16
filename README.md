@@ -34,6 +34,7 @@ sample_survival_curve_output.png
 
 ## Column Names
 Demographic Features
+* `PID`: patient ID
 * `AGE`: age in years
 * `SEX`: male(`M`) or female(`F`)
 * `BMI`: body mass index in $kg/m^2$
@@ -104,3 +105,30 @@ $$S(t|x) = \exp(-CH(t|x))$$
 ## Sample Survival Curves
 * Survival curves of the sample cases are shown below:
 ![Survival Curves](sample_survival_curve_output.png)
+
+---
+# Usage Instructions
+## 1. Prepare Environment (`python=3.12.9`)
+```bash
+pip install -r requirements.txt
+```
+
+## 2. Prepare Patient Data
+* Prepare patient data in the format described above, similar to `src/sample_data.csv`.
+
+## 3. Risk Stratification
+* Run the following script to generate survival curves for each `PID`.
+
+* This creates a new output folder that contains CSV files, each containing hazard and survival probability as a function of time.
+
+```bash
+python3 risk_stratification_xgb.py --model_type complex --data_csv path/to/patient/data.csv --output_dir path/to/output
+```
+
+## 4. Survival Curve Visualization
+* Run the following script to generate survival curve plots for each output CSV file.
+
+```bash
+python3 survival_curve_visualization.py --data path/to/file.csv --output_dir path/to/output
+```
+
